@@ -23,9 +23,10 @@ class MoviesController < ApplicationController
   end
 
   def create
-    @movie = Movie.new
-    @movie.title = params.fetch(:movie).fetch(:title)
-    @movie.description = params.fetch(:movie).fetch(:description)
+    movie_attributes = params.require(:movie).permit(:title, :description)
+
+    #  Mass assignment = .new method can receive a hash that stores all the values needed to create new instance
+    @movie = Movie.new(movie_attributes)
 
     if @movie.valid?
       @movie.save
