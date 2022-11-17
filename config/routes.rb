@@ -1,24 +1,26 @@
 Rails.application.routes.draw do
-  # Routes for the Director resource:
 
-  # CREATE
-  post("/insert_director", { :controller => "directors", :action => "create" })
+  resources :directors
+  # # Routes for the Director resource:
+
+  # # CREATE
+  # post("/insert_director", { :controller => "directors", :action => "create" })
           
-  # READ
-  get("/directors", { :controller => "directors", :action => "index" })
+  # # READ
+  # get("/directors", { :controller => "directors", :action => "index" })
   
-  get("/directors/:path_id", { :controller => "directors", :action => "show" })
+  # get("/directors/:path_id", { :controller => "directors", :action => "show" })
   
-  # UPDATE
+  # # UPDATE
   
-  post("/modify_director/:path_id", { :controller => "directors", :action => "update" })
+  # post("/modify_director/:path_id", { :controller => "directors", :action => "update" })
   
-  # DELETE
-  get("/delete_director/:path_id", { :controller => "directors", :action => "destroy" })
+  # # DELETE
+  # get("/delete_director/:path_id", { :controller => "directors", :action => "destroy" })
 
-  #------------------------------
+  # #------------------------------
 
-  get "/", controller: "movies", action: "index" 
+  # get "/", controller: "movies", action: "index" 
 
   # get "/" => "movies#index"
 

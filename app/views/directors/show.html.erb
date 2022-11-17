@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      Director #<%= @the_director.id %> details
+      Director #<%= @director.id %> details
     </h1>
 
     <div>
@@ -12,7 +12,7 @@
       </div>
 
       <div>
-        <a href="/delete_director/<%= @the_director.id %>">
+        <a href="/delete_director/<%= @director.id %>">
           Delete director
         </a>
       </div>
@@ -23,35 +23,35 @@
         Dob
       </dt>
       <dd>
-        <%= @the_director.dob %>
+        <%= @director.dob %>
       </dd>
 
       <dt>
         Name
       </dt>
       <dd>
-        <%= @the_director.name %>
+        <%= @director.name %>
       </dd>
 
       <dt>
         Bio
       </dt>
       <dd>
-        <%= @the_director.bio %>
+        <%= @director.bio %>
       </dd>
 
       <dt>
         Created at
       </dt>
       <dd>
-        <%= time_ago_in_words(@the_director.created_at) %> ago
+        <%= time_ago_in_words(@director.created_at) %> ago
       </dd>
 
       <dt>
         Updated at
       </dt>
       <dd>
-        <%= time_ago_in_words(@the_director.updated_at) %> ago
+        <%= time_ago_in_words(@director.updated_at) %> ago
       </dd>
     </dl>
   </div>
@@ -66,13 +66,13 @@
       Edit director
     </h2>
 
-    <form action="/modify_director/<%= @the_director.id %>"  method="post" >
+    <form action="/modify_director/<%= @director.id %>"  method="post" >
       <div>
         <label for="dob_box">
           Dob
         </label>
 
-        <input type="date" id="dob_box" name="query_dob" value="<%= @the_director.dob %>">
+        <input type="date" id="dob_box" name="query_dob" value="<%= @director.dob %>">
       </div>
 
       <div>
@@ -80,7 +80,7 @@
           Name
         </label>
 
-        <input type="text" id="name_box" name="query_name" value="<%= @the_director.name %>">
+        <input type="text" id="name_box" name="query_name" value="<%= @director.name %>">
       </div>
 
       <div>
@@ -88,7 +88,7 @@
           Bio
         </label>
 
-        <textarea id="bio_box" name="query_bio"><%= @the_director.bio %></textarea>
+        <textarea id="bio_box" name="query_bio"><%= @director.bio %></textarea>
       </div>
 
       <button>
