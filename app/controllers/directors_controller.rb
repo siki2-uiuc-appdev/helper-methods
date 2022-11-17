@@ -30,27 +30,29 @@ class DirectorsController < ApplicationController
     end
   end
 
+  def edit
+    @director = Director.find(params.fetch(:id))
+  end
+
   def update
-    the_id = params.fetch("path_id")
-    director = Director.where({ :id => the_id }).at(0)
+    @director = Director.find(params.fetch(:id))
 
-    director.dob = params.fetch("dob")
-    director.name = params.fetch("name")
-    director.bio = params.fetch("bio")
+    @director.dob = params.fetch("dob")
+    @director.name = params.fetch("name")
+    @director.bio = params.fetch("bio")
 
-    if director.valid?
-      director.save
-      redirect_to("/directors/#{director.id}", { :notice => "Director updated successfully."} )
+    if @director.valid?
+      @director.save
+      redirect_to("/directors/#{@director.id}", { :notice => "Director updated successfully."} )
     else
-      redirect_to("/directors/#{director.id}", { :alert => director.errors.full_messages.to_sentence })
+      redirect_to("/directors/#{@director.id}", { :alert => @director.errors.full_messages.to_sentence })
     end
   end
 
   def destroy
-    the_id = params.fetch("path_id")
-    director = Director.where({ :id => the_id }).at(0)
+    @director = Director.find(params.fetch(:id))
 
-    director.destroy
+    @director.destroy
 
     redirect_to("/directors", { :notice => "Director deleted successfully."} )
   end

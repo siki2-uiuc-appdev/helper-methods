@@ -6,15 +6,15 @@
 
     <div>
       <div>
-        <a href="/directors">
-          Go back
-        </a>
+        <%= link_to "Go back", directors_path %>
       </div>
 
       <div>
-        <a href="/delete_director/<%= @director.id %>">
-          Delete director
-        </a>
+        <%= link_to "Edit director", edit_director_path(@director) %>
+      </div>
+
+      <div>
+        <%= link_to "Delete director", @director, method: :delete %>
       </div>
     </div>
 
