@@ -17,13 +17,13 @@ class DirectorsController < ApplicationController
   end
 
   def create
-    director = Director.new
-    director.dob = params.fetch("dob")
-    director.name = params.fetch("name")
-    director.bio = params.fetch("bio")
+    @director = Director.new
+    @director.dob = params.fetch("dob")
+    @director.name = params.fetch("name")
+    @director.bio = params.fetch("bio")
 
-    if director.valid?
-      director.save
+    if @director.valid?
+      @director.save
       redirect_to(directors_url,  notice: "Director created successfully." )
     else
       render "new"

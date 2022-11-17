@@ -5,7 +5,7 @@
     </h1>
 
     <% @director.errors.full_messages.each do |message|  %>
-      <p style="color: red"><%= message %></p>
+      <p style="color: red;"><%= message %></p>
     <% end %>
 
     <%= form_with(url: directors_path) do %>
