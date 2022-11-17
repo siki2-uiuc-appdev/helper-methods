@@ -1,0 +1,58 @@
+<div>
+  <div>
+    <h2>
+      Add a new director
+    </h2>
+
+    <%= form_with(url: directors_path) do %>
+
+      <div>
+        <%= label_tag :dob %>
+        <%= date_field_tag :dob %>
+      </div>
+
+      <div>
+        <%= label_tag :name %>
+        <%= text_field_tag :name %>
+      </div>
+
+      <div>
+        <%= label_tag :bio  %>
+        <%= text_area_tag :bio, @director.bio, rows: 3%>
+      </div>
+
+      <%= button_tag "Create Director" %>
+
+    <% end %>
+
+    <%# <form action="/insert_director" method="post">
+      <div>
+        <label for="dob_box">
+          Dob
+        </label>
+
+        <input type="date" id="dob_box" name="query_dob">
+      </div>
+
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <label for="bio_box">
+          Bio
+        </label>
+
+        <textarea id="bio_box" name="query_bio" rows="3"></textarea>
+      </div>
+
+      <button>
+        Create director
+      </button>
+    </form> %>
+  </div>
+</div>

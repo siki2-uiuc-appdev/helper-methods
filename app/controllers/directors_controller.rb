@@ -1,27 +1,26 @@
 class DirectorsController < ApplicationController
+
+  def new
+    @director = Director.new
+  end
+
   def index
-    matching_directors = Director.all
 
-    @directors = matching_directors.order({ :created_at => :desc })
-
-    render({ :template => "directors/index.html.erb" })
+    @directors = Director.order( created_at: :desc )
   end
 
   def show
-    the_id = params.fetch("path_id")
 
-    matching_directors = Director.where({ :id => the_id })
+    @director = Director.find(params.fetch(:id))
 
-    @director = matching_directors.at(0)
-
-    render({ :template => "directors/show.html.erb" })
+  
   end
 
   def create
     director = Director.new
-    director.dob = params.fetch("query_dob")
-    director.name = params.fetch("query_name")
-    director.bio = params.fetch("query_bio")
+    director.dob = params.fetch("dob")
+    director.name = params.fetch("name")
+    director.bio = params.fetch("bio")
 
     if director.valid?
       director.save
@@ -35,9 +34,9 @@ class DirectorsController < ApplicationController
     the_id = params.fetch("path_id")
     director = Director.where({ :id => the_id }).at(0)
 
-    director.dob = params.fetch("query_dob")
-    director.name = params.fetch("query_name")
-    director.bio = params.fetch("query_bio")
+    director.dob = params.fetch("dob")
+    director.name = params.fetch("name")
+    director.bio = params.fetch("bio")
 
     if director.valid?
       director.save
