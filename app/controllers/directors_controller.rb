@@ -24,9 +24,9 @@ class DirectorsController < ApplicationController
 
     if director.valid?
       director.save
-      redirect_to("/directors", { :notice => "Director created successfully." })
+      redirect_to(directors_url,  notice: "Director created successfully." )
     else
-      redirect_to("/directors", { :alert => director.errors.full_messages.to_sentence })
+      render "new"
     end
   end
 
@@ -43,9 +43,9 @@ class DirectorsController < ApplicationController
 
     if @director.valid?
       @director.save
-      redirect_to("/directors/#{@director.id}", { :notice => "Director updated successfully."} )
+      redirect_to director_url(@director.id), notice: "Director updated successfully." 
     else
-      redirect_to("/directors/#{@director.id}", { :alert => @director.errors.full_messages.to_sentence })
+      redirect_to director_url(@director.id), alert: @director.errors.full_messages.to_sentence 
     end
   end
 
@@ -54,6 +54,6 @@ class DirectorsController < ApplicationController
 
     @director.destroy
 
-    redirect_to("/directors", { :notice => "Director deleted successfully."} )
+    redirect_to directors_url, notice: "Director deleted successfully."
   end
 end

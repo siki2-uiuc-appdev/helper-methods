@@ -8,7 +8,7 @@
       <p style="color: red"><%= message %></p>
     <% end %>
 
-    <%= form_with(url: directors_path) do %>
+    <%= form_with(url: director_path, method: :patch)  do %>
 
       <div>
         <%= label_tag :dob %>
