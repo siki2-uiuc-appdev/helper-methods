@@ -17,10 +17,12 @@ class DirectorsController < ApplicationController
   end
 
   def create
-    @director = Director.new
-    @director.dob = params.fetch("dob")
-    @director.name = params.fetch("name")
-    @director.bio = params.fetch("bio")
+    director_params = params.require(:director).permit(:dob, :name, :bio)
+
+    @director = Director.new(director_params)
+    # @director.dob = params.fetch("dob")
+    # @director.name = params.fetch("name")
+    # @director.bio = params.fetch("bio")
 
     if @director.valid?
       @director.save
@@ -36,10 +38,14 @@ class DirectorsController < ApplicationController
 
   def update
     @director = Director.find(params.fetch(:id))
+    director_params = params.require(:director).permit(:dob, :name, :bio)
 
-    @director.dob = params.fetch("dob")
-    @director.name = params.fetch("name")
-    @director.bio = params.fetch("bio")
+    @director.update(director_params)
+
+    # redirect_to director_url(@director.id), notice: "Director updated successfully." 
+    # @director.dob = params.fetch(:dob)
+    # @director.name = params.fetch(:name)
+    # @director.bio = params.fetch(:bio)
 
     if @director.valid?
       @director.save

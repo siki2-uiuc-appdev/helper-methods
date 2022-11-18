@@ -4,5 +4,5 @@ class Director < ApplicationRecord
   validates :dob, presence: true
   validates :bio, presence: true 
 
-  # has_many(:filmography, { :class_name => "Movie", :foreign_key => "director_id", :dependent => :destroy})
+  
 end
